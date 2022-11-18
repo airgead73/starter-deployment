@@ -5,6 +5,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 /**
+ * internal imports
+ */
+const { testMessage } = require('./config/env');
+/**
  * app activation
  */
 const app = express();
@@ -19,7 +23,7 @@ app.use(cookieParser());
  * routes
  */
 app.get('/', (req, res, next) => {
-  res.send('Practice for deploying apps.');
+  res.send(`Practice for deploying apps. Test message: ${testMessage}`);
 });
 /**
  * error handling
