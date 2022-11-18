@@ -4,7 +4,8 @@
   "description": "Starter for testing hosting services.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/airgead73/starter-deployment/issues"
   },
-  "homepage": "https://github.com/airgead73/starter-deployment#readme"
+  "homepage": "https://github.com/airgead73/starter-deployment#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

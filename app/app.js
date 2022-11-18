@@ -18,12 +18,28 @@ app.use(cookieParser());
 /**
  * routes
  */
-app.get((req, res, next) => {
+app.get('/', (req, res, next) => {
   res.send('Practice for deploying apps.');
 });
 /**
  * error handling
  */
+app.use(function(req, res, next) {
+  const error = new Error('path not found.');
+  next(error);
+});
+
+app.use(function(err, req, res, next) {
+  let status;
+  if(!err.status) {
+    status = 500;
+  } else {
+    status = err.status;
+  }
+
+  res.send(`STATUS: ${status}, ERROR: ${err.message}.`);
+  
+});
 /**
  * export app
  */
