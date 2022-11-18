@@ -1,0 +1,19 @@
+{
+  "name": "starter-deployment",
+  "version": "1.0.0",
+  "description": "Starter for testing hosting services.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airgead73/starter-deployment.git"
+  },
+  "author": "dan m.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/airgead73/starter-deployment/issues"
+  },
+  "homepage": "https://github.com/airgead73/starter-deployment#readme"
+}
