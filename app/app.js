@@ -10,7 +10,6 @@ const cookieParser = require('cookie-parser');
  */
 const { testMessage, isDev } = require('./config/env');
 const { authConfig } = require('./config');
-const { checkAuthClient } = require('./middleware');
 /**
  * app activation
  */
@@ -36,7 +35,7 @@ app.use(function(req, res, next) {
 /**
  * routes
  */
-app.get('/', checkAuthClient, (req, res, next) => {
+app.get('/', (req, res, next) => {
   res.send(`Practice for deploying apps. Test message: ${testMessage}`);
 });
 /**
