@@ -1,6 +1,7 @@
 const http = require('http');
 const app = require('./app/app.js')
 const port = process.env.PORT || 6060;
+const { connectDB } = require('./app/config');
 
 if (port === undefined) {
   throw new Error(
@@ -12,7 +13,10 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-server.listen(port);
+connectDB().then(() => {
+  server.listen(port);
+});
+
 server.on('error', onError);
 server.on('listening', onListening);
 
