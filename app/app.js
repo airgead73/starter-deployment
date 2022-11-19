@@ -30,14 +30,25 @@ app.set('view engine', 'ejs');
  */
 app.use(function(req, res, next) {
   res.locals.isAuthenticated = req.oidc.isAuthenticated();
-  if(isDev) console.log('authenticated:',req.oidc.isAuthenticated());
   next();
 });
 /**
  * routes
  */
-app.get('/', checkAuthClient, (req, res, next) => {
-  res.send(`Practice for deploying apps. Test message: ${testMessage}`);
+app.get('/', (req, res, next) => {
+  const { isAuthenticated } = res.locals;
+
+  if(isAuthenticated) {
+    return res.status(200).render('template', {
+      success: true,
+      pagePath: './pages/LoggedIn'
+    });
+  } else {
+    return res.status(401).render('template', {
+      success: false,
+      pagePath: './pages/NotLoggedIn'
+    });
+  }
 });
 /**
  * error handling
