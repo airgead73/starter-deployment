@@ -10,6 +10,9 @@ const baseURL = process.env.BASE_URL;
 const clientID = process.env.CLIENT_ID;
 const issuerURL = process.env.ISSUER_BASE_URL;
 
+/* DB */
+const mongoURI = process.env.MONGO_URI;
+
 /* Check Variables */
 if(!testMessage) {
   throw new Error('.env is missing the definition of TEST_MSG environment variable.');
@@ -31,6 +34,10 @@ if(!issuerURL) {
   throw new Error('.env is missing the definition of ISSUER_BASE_URL environment variable.');
 }
 
+if(!mongoURI) {
+  throw new Error('.env is missing the definition of MONGO_URI environment variable.');
+}
+
 /* export */
 module.exports = {
   authSecret,
@@ -38,5 +45,6 @@ module.exports = {
   clientID,
   isDev,
   issuerURL,
+  mongoURI,
   testMessage
 }
