@@ -2,7 +2,7 @@
  * external imports
  */
 const express = require('express');
-//const { auth } = require('express-openid-connect');
+const { auth } = require('express-openid-connect');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 /**
@@ -10,11 +10,12 @@ const cookieParser = require('cookie-parser');
  */
 const { testMessage, isDev } = require('./config/env');
 const { authConfig } = require('./config');
+const { checkAuthClient } = require('./middleware');
 /**
  * app activation
  */
 const app = express();
-//app.use(auth(authConfig));
+app.use(auth(authConfig));
 /**
  * middleware
  */
@@ -27,15 +28,15 @@ app.set('view engine', 'ejs');
 /**
  * locals
  */
-// app.use(function(req, res, next) {
-//   res.locals.isAuthenticated = req.oidc.isAuthenticated();
-//   if(isDev) console.log('authenticated:',req.oidc.isAuthenticated());
-//   next();
-// });
+app.use(function(req, res, next) {
+  res.locals.isAuthenticated = req.oidc.isAuthenticated();
+  if(isDev) console.log('authenticated:',req.oidc.isAuthenticated());
+  next();
+});
 /**
  * routes
  */
-app.get('/', (req, res, next) => {
+app.get('/', checkAuthClient, (req, res, next) => {
   res.send(`Practice for deploying apps. Test message: ${testMessage}`);
 });
 /**
