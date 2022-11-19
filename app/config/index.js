@@ -1,5 +1,5 @@
-const { authConfig } = require('./config.auth');
+// const { authConfig } = require('./config.auth');
 
-module.exports = {
-  authConfig
-}
+// module.exports = {
+//   authConfig
+// }

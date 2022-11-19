@@ -2,7 +2,7 @@
  * external imports
  */
 const express = require('express');
-const { auth } = require('express-openid-connect');
+//const { auth } = require('express-openid-connect');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 /**
@@ -14,7 +14,7 @@ const { authConfig } = require('./config');
  * app activation
  */
 const app = express();
-app.use(auth(authConfig));
+//app.use(auth(authConfig));
 /**
  * middleware
  */
@@ -27,11 +27,11 @@ app.set('view engine', 'ejs');
 /**
  * locals
  */
-app.use(function(req, res, next) {
-  res.locals.isAuthenticated = req.oidc.isAuthenticated();
-  if(isDev) console.log('authenticated:',req.oidc.isAuthenticated());
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.locals.isAuthenticated = req.oidc.isAuthenticated();
+//   if(isDev) console.log('authenticated:',req.oidc.isAuthenticated());
+//   next();
+// });
 /**
  * routes
  */
